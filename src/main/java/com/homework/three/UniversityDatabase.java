@@ -7,26 +7,6 @@ public class UniversityDatabase {
     private Connection connection = null;
     private PreparedStatement preparedStatement = null;
 
-    public void createConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/university", "natalia",
-                    "natalia0211");
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException se) {
-            System.out.println(se.getMessage());
-        } finally {
-            connection.close();
-        }
-    }
-
-    public UniversityDatabase() throws SQLException {
-        createConnection();
-    }
-
     public void addStudent(Student student) throws SQLException {
         if (connection != null) {
             try {
